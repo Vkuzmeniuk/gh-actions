@@ -10,9 +10,9 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: 18
-            - name: Change directory
-              run: cd ./02_Starting_Project
             - name: Install dependencies
+              working-directory: ./02_Starting_Project
               run: npm ci
             - name: Run tests
+              working-directory: ./02_Starting_Project
               run: npm test
