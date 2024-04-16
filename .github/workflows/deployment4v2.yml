@@ -1,0 +1,42 @@
+name: Deployment practice project 4 v2
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        working-directory: ./04_Practice_Project
+        run: npm ci
+      - name: Lint
+        working-directory: ./04_Practice_Project           
+        run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        working-directory: ./04_Practice_Project
+        run: npm ci
+      - name: Test code
+        working-directory: ./04_Practice_Project
+        run: npm run test
+
+  deploy:
+      runs-on: ubuntu-latest
+      needs: [lint, test]
+      steps:
+        - name: Get code
+          uses: actions/checkout@v3
+        - name: Install dependencies
+          working-directory: ./04_Practice_Project
+          run: npm ci
+        - name: Build
+          working-directory: ./04_Practice_Project
+          run: npm run build
+        - name: Deploy code
+          working-directory: ./04_Practice_Project
+          run: echo "Deploying.."
