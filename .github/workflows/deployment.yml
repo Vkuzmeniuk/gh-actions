@@ -16,3 +16,21 @@ jobs:
             - name: Run tests
               working-directory: ./02_Starting_Project
               run: npm test
+    deploy:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+          - name: Get code
+            uses: actions/checkout@v3
+          - name: Install NodeJS
+            uses: actions/setup-node@v3
+            with:
+              node-version: 18
+          - name: Install dependencies
+            working-directory: ./02_Starting_Project
+            run: npm ci
+          - name: Build project
+            run: npm run build
+          - name: Deploy
+            run: echo "Dploying..."
+
