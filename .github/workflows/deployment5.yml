@@ -35,12 +35,11 @@ jobs:
             uses: actions/upload-artifact@v3
             with:
               name: dist-files
-              path: |
-                ./05_Starting_Project/dist
+              path: 05_Starting_Project/dist
     deploy:
         defaults:
             run:
-                working-directory: ./05_Starting_Project
+                working-directory: 05_Starting_Project
         needs: build
         runs-on: ubuntu-latest
         steps:
