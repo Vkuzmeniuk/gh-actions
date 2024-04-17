@@ -39,7 +39,8 @@ jobs:
     deploy:
         defaults:
             run:
-                working-directory: 05_Starting_Project
+                shell: bash
+                working-directory: ./05_Starting_Project
         needs: build
         runs-on: ubuntu-latest
         steps:
