@@ -37,10 +37,10 @@ jobs:
               name: dist-files
               path: 05_Starting_Project/dist
     deploy:
-        defaults:
-            run:
-                shell: bash
-                working-directory: ./05_Starting_Project
+        # defaults:
+        #     run:
+        #         shell: bash
+        #         working-directory: ./05_Starting_Project
         needs: build
         runs-on: ubuntu-latest
         steps:
