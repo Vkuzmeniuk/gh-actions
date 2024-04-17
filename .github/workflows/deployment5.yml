@@ -37,7 +37,6 @@ jobs:
               name: dist-files
               path: |
                 ./05_Starting_Project/dist
-                ./05_Starting_Project/package.json
     deploy:
         defaults:
             run:
@@ -45,5 +44,11 @@ jobs:
         needs: build
         runs-on: ubuntu-latest
         steps:
-        - name: Deploy
-          run: echo "Deploying..."
+          - name: Get build artifacts
+            uses: actions/download-artifact@v3
+            with:
+              name: dist-files
+          - name: Output contents
+            run: ls
+          - name: Deploy
+            run: echo "Deploying..."
